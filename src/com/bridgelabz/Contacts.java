@@ -4,20 +4,9 @@ import java.util.List;
 
 class Contacts {
     private String firstName, lastName, address, city, state, zipCode, contactNo, email;
-    /*public Contacts(String firstName, String lastName, String addr, String cityName, String stateName, String zipCodeNo, String contact, String emailAddress)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = addr;
-        this.city = cityName;
-        this.state = stateName;
-        this.zipCode = zipCodeNo;
-        this.contactNo = contact;
-        this.email = emailAddress;
-    }*/
-
-
+    
     //Getter methods =The get method returns the variable value
+
     public String getFirstName(){
         return firstName;
     }
@@ -76,5 +65,6 @@ class Contacts {
                 "\n Zip Code Is " + zipCode);
 
     }
+
 
 }
