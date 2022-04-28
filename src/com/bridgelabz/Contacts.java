@@ -1,18 +1,12 @@
 package com.bridgelabz;
 
+import java.util.List;
+
 class Contacts {
     private String firstName, lastName, address, city, state, zipCode, contactNo, email;
-    public Contacts(String firstName, String lastName, String addr, String cityName, String stateName, String zipCodeNo, String contact, String emailAddress)
-    {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = addr;
-        this.city = cityName;
-        this.state = stateName;
-        this.zipCode = zipCodeNo;
-        this.contactNo = contact;
-        this.email = emailAddress;
-    }
+    
+    //Getter methods =The get method returns the variable value
+
     public String getFirstName(){
         return firstName;
     }
@@ -38,5 +32,39 @@ class Contacts {
     public String getZipCode(){
         return zipCode;
     }
+
+    //Setter method =>The set method sets the value.
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public void setAddress(String address){
+        this.address = address;
+    }
+    public void setCity(String city){
+        this.city = city;
+    }
+    public void setState(String state){
+        this.state = state;
+    }
+    public void setContactNo(String contactNo){
+        this.contactNo = contactNo;
+    }
+    public void setZipCode(String zipCode){
+        this.zipCode = zipCode;
+    }
+
+    public String toString(){
+        return ("FirstName IS " + firstName + " \n LastNAme Is " + lastName + " \n Email Is " + email +
+                "\n Contact No Is " + contactNo + "\n Address Is " + address + " \n City Is " + city + "\n State Is " + state +
+                "\n Zip Code Is " + zipCode);
+
+    }
+
 
 }
