@@ -3,7 +3,6 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.concurrent.Callable;
 
 public class AddressBookMain
 {
@@ -14,27 +13,37 @@ public class AddressBookMain
      public void addContactDetail()
          {
                 System.out.println("Enter First Name");
-                contacts.setFirstName(scanner.nextLine());
+                contacts.setFirstName(scanner.next());
                 System.out.println("Enter Last Name");
-                contacts.setLastName(scanner.nextLine());
+                contacts.setLastName(scanner.next());
                 System.out.println("Enter contact Number:");
-                contacts.setContactNo(scanner.nextLine());
+                contacts.setContactNo(scanner.next());
                 System.out.println("Enter Email: ");
-                contacts.setEmail(scanner.nextLine());
+                contacts.setEmail(scanner.next());
                 System.out.println("Enter Address: ");
-                contacts.setAddress(scanner.nextLine());
+                contacts.setAddress(scanner.next());
                 System.out.println("Enter City Name: ");
-                contacts.setCity(scanner.nextLine());
+                contacts.setCity(scanner.next());
                 System.out.println("Enter State: ");
-                contacts.setState(scanner.nextLine());
+                contacts.setState(scanner.next());
                 System.out.println("Enetr Zip Code:");
-                contacts.setZipCode(scanner.nextLine());
-
+                contacts.setZipCode(scanner.next());
                     contactDetails.add(contacts);
+             System.out.println("if you want to add multiple person to Address Book");
+             System.out.println("If yes press 1");
+             int n = scanner.nextInt();
+             if (n==1){
+                 addContactDetail();
+             }
+             else
+                 System.out.println("");
           }
             public void displayDetails()
             {
-                System.out.println(contactDetails);
+                Iterator itr=contactDetails.iterator();
+                while(itr.hasNext()){
+                    System.out.println(itr.next());
+                }
             }
             public void updateContactDetail(String firstName ,String lastName)
             {
@@ -76,7 +85,6 @@ public class AddressBookMain
                                 String zipcode=scanner.next();
                                 contact.setZipCode(zipcode);
                                 break;
-
                         }
                     }
                     else
@@ -99,21 +107,36 @@ public class AddressBookMain
                     System.out.println("Contact is removed!");
                     displayDetails();
                 }
-
-            public static void main(String[] args)
+                public static void main(String[] args)
             {
                 System.out.println("*_*_*_*_*_*_*_*_*_*_Welcome to Address Book_*_*_*_*_*_*_*_*_*_*");
                 AddressBookMain addressbookmain = new AddressBookMain();
-                addressbookmain.addContactDetail();
-                addressbookmain.displayDetails();
-                System.out.println("Enter First and last name to update details");
-                String firstName = scanner.nextLine();
-                System.out.println("last name to update details");
-                String lastName = scanner.nextLine();
-                addressbookmain.updateContactDetail(firstName,lastName);
-                System.out.println("Record updated Sucessfully.............");
-                addressbookmain.displayDetails();
-                addressbookmain.deleteContact();
-           }
+                while (true) {
+                    System.out.println(" Enter 1 to add\t Enter 2 to Update\t Enter 3 to delete contact\tEnter 4 for Show Contact Details\t Enter 5 to Exit");
+                    int ch = scanner.nextInt();
+                    switch (ch) {
+                        case 1:
+                            addressbookmain.addContactDetail();
+                            System.out.println("Added Successfully...");
+                            break;
+                        case 2:
+                            System.out.println("Enter First Name  and Last name for which you want to modify info: ");
+                            System.out.println("Enter First and last name to update details");
+                            String firstName = scanner.nextLine();
+                            System.out.println("last name to update details");
+                            String lastName = scanner.nextLine();
+                            addressbookmain.updateContactDetail(firstName,lastName);
+                            break;
+                        case 3:
+                            addressbookmain.deleteContact();
+                            break;
 
+                        case 4 :
+                            addressbookmain.displayDetails();
+                            break;
+                        case 5:
+                            System.exit(0);
+                    }
+                }
+           }
 }
