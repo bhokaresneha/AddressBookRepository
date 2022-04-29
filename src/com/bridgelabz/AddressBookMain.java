@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-
 public class AddressBookMain
 {
     Contacts contacts = new Contacts();
@@ -86,7 +85,6 @@ public class AddressBookMain
                                 String zipcode=scanner.next();
                                 contact.setZipCode(zipcode);
                                 break;
-
                         }
                     }
                     else
