@@ -84,6 +84,21 @@ public class AddressBookMain
                 }
 
             }
+                public void deleteContact()
+                {
+                    // Traversing Using Iterator
+
+                    //getting the Iterator
+                    Iterator<Contacts> deleteRecord = contactDetails.iterator();
+                    //Traversing list using hasNext() function till condition of while goes false
+                    while (deleteRecord.hasNext()){
+                        Contacts nextElement = deleteRecord.next();
+                        //iterator inbuild  remove() function to delete single record
+                        deleteRecord.remove();
+                    }
+                    System.out.println("Contact is removed!");
+                    displayDetails();
+                }
 
             public static void main(String[] args)
             {
@@ -98,5 +113,7 @@ public class AddressBookMain
                 addressbookmain.updateContactDetail(firstName,lastName);
                 System.out.println("Record updated Sucessfully.............");
                 addressbookmain.displayDetails();
+                addressbookmain.deleteContact();
+           }
 
 }
