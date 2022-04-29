@@ -98,5 +98,5 @@ public class AddressBookMain
                 addressbookmain.updateContactDetail(firstName,lastName);
                 System.out.println("Record updated Sucessfully.............");
                 addressbookmain.displayDetails();
-           }
+
 }
