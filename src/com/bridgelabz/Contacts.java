@@ -4,7 +4,7 @@ import java.util.List;
 
 class Contacts {
     private String firstName, lastName, address, city, state, zipCode, contactNo, email;
-    
+
     //Getter methods =The get method returns the variable value
 
     public String getFirstName(){
@@ -53,7 +53,7 @@ class Contacts {
         this.state = state;
     }
     public void setContactNo(String contactNo){
-        this.contactNo = contactNo;
+        this.contactNo=contactNo;
     }
     public void setZipCode(String zipCode){
         this.zipCode = zipCode;
