@@ -33,12 +33,11 @@ public class AddressBookMain
           }
             public void displayDetails()
             {
-                for (Contacts contactDetailsValue : contactDetails){
-                    System.out.println(contactDetailsValue);
-                    System.out.println("-----------------------------");
+                Iterator itr=contactDetails.iterator();
+                while(itr.hasNext()){
+                    System.out.println(itr.next());
 
-            }
-            }
+             }
             public void updateContactDetail()
             {
                 System.out.println("Enter First Name for which you want to modify info: ");
