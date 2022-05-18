@@ -16,9 +16,9 @@ public class AddressBookMain  {
                 System.out.println("The AddressBook already contains");
                 break;
             }else {
-                ArrayList<Contacts> contactDetails = new ArrayList<>();
-                addressBookSystem.displayActionMenu(addressBookSystem, contactDetails);
-                hashmap.put(AddressBookName, contactDetails);
+                ArrayList<Contacts> details = new ArrayList<>();
+                addressBookSystem.displayActionMenu(addressBookSystem, details);
+                hashmap.put(AddressBookName, details);
             }
             System.out.println("AddressBook Added" + hashmap + " ");
             System.out.println("To Add More Address Books  press Y otherwise press N");
@@ -142,23 +142,23 @@ public class AddressBookMain  {
             }
         }
     }
-    public  void displayActionMenu(AddressBookMain addressBooksystem,ArrayList<Contacts> contactDetails ) {
+    public  void displayActionMenu(AddressBookMain addressBooksystem,ArrayList<Contacts> details ) {
         int ans;
         do {
             System.out.println(" Enter your choice \n1.Add Detail\n2.Update Detail \n3.Delete Detail\n4.Display ALl Details");
             int ch = scanner.nextInt();
             switch (ch) {
                 case 1:
-                    addressBooksystem.addContactDetail(contactDetails);
+                    addressBooksystem.addContactDetail(details);
                     System.out.println("Added Successfully...");
                     break;
                 case 2:
-                    addressBooksystem.updateContactDetail(contactDetails);
+                    addressBooksystem.updateContactDetail(details);
                     System.out.println("Record Updated Successfully...");
 
                     break;
                 case 3:
-                    addressBooksystem.deleteContact(contactDetails);
+                    addressBooksystem.deleteContact(details);
                     break;
 
                 case 4:
