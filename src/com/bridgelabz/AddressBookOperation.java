@@ -7,11 +7,14 @@ public class AddressBookOperation extends AddressBookMain {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Contacts> contactDetails=new ArrayList<>();
     static char choice;
-     static HashMap<String, ArrayList<Contacts>> hashmap = new HashMap<>();
+    // static AddressBookOperation contacts =new AddressBookOperation();
+    static HashMap<String, ArrayList<Contacts>> hashmap = new HashMap<>();
+
     static String AddressBookName;
     // Creating Multiple Address Books
     public static void AddressBook(AddressBookOperation addressBookOperation) {
         do {
+
             System.out.println("Enter your choice \n1.Add New Address Book \n2.Display Address Books Names\n3.Search Records based on city or state");
             int ch = scanner.nextInt();
             switch (ch) {
@@ -34,7 +37,8 @@ public class AddressBookOperation extends AddressBookMain {
                     break;
                 case 2:
                     displayAddressBook();
-                break;
+                    break;
+
                 case 3:
                     System.out.println("Enter city name or state name to search records");
                     String name = scanner.next();
@@ -47,7 +51,9 @@ public class AddressBookOperation extends AddressBookMain {
 
 
             }
-            System.out.println("To do  Addredd book problem  on it press Y otherwise press N");
+
+            System.out.println("Perform More operations on Multiple Books press Y otherwise press N");
+
             choice = scanner.next().charAt(0);
         } while (choice != 'n' && choice != 'N');
 
@@ -117,7 +123,6 @@ public class AddressBookOperation extends AddressBookMain {
         String firstName = scanner.next();
 
         /*  Iterate to search for first name */
-
         for (Contacts contact : contactDetails) {
            // System.out.println("First Name: " + contact.getFirstName());
             if (contact.getFirstName().equals(firstName)) {
@@ -202,6 +207,7 @@ public class AddressBookOperation extends AddressBookMain {
     }
 
 
+
     // Displaying Details For particular/current address book (ContactDetails Arraylist)
     public static void displayDetails(ArrayList<Contacts> contactDetails){
         for (Contacts contact : contactDetails) {
@@ -224,6 +230,28 @@ public class AddressBookOperation extends AddressBookMain {
     }
 
 
+    // serching a record in a through the City name or state name in single Address Book
+    public static void searchinSingleAddressBook(ArrayList<Contacts> contactDetails) {
+        int flag = 0;
+        ArrayList<Contacts> match = new ArrayList<>();
+        System.out.println("Enter City Name or State Name to search a particular person");
+        String data = scanner.next();
+        for (Contacts contact : contactDetails) {
+            //    System.out.println("First Name: "+contact.getFirstName());
+            if (contact.getCity().equals(data) || contact.getState().equals(data)) {
+                flag = 1;
+                match.add(contact);
+            }
+        }
+        if (flag == 1) {
+            System.out.println("...Match Found...");
+            for (Contacts p : match) {
+                System.out.println("Person Name =>"+p.getFirstName()+"\tCity=>"+p.getCity()+"\tState =>"+p.getState());
+            }
+        } else {
+            System.out.println("Match Not Found!!!");
+        }
+    }
         public static List<Contacts> searchinMultipleAddressBook(String name){
             for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()){
                     for (Contacts v:entry.getValue()){
@@ -236,12 +264,12 @@ public class AddressBookOperation extends AddressBookMain {
             return null;
         }
 
-
     //Function for operations which you want to perform on Address Book
     public static ArrayList<Contacts> displayActionMenu(ArrayList<Contacts> details) {
         do {
-            System.out.println(" Enter your choice \n1.Add Detail\n2.Update Detail \n3.Delete Detail\n4.Display ALl Details" +
-                    "\n5.searchByCityOrState");
+            System.out.println(" Enter your choice \n1.Add Detail\n2.Update Detail \n3.Delete Detail\n4.Display ALl Details\n5.Search Records based on city or state" +
+                    "\n6.Exit");
+
             int ch = scanner.nextInt();
             switch (ch) {
                 case 1:
@@ -257,11 +285,16 @@ public class AddressBookOperation extends AddressBookMain {
                 case 4:
                     displayDetails(details);
                     break;
-
+                case 5:
+                    searchinSingleAddressBook(details);
+                    break;
+                case 6:
+                    System.out.println("EXIT");
+                    break;
                 default:
                     System.out.println("Invalid Choice !! Please Enter Valid Choice ");
             }
-            System.out.println("\nTo perform more operations on Particular Address Book press Y otherwise press N");
+            System.out.println("\n To perform more operations on Particular Address Book press Y otherwise press N");
             choice = scanner.next().charAt(0);
         } while (choice != 'n' && choice != 'N');
         return null;
