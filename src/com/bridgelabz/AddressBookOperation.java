@@ -15,7 +15,8 @@ public class AddressBookOperation extends AddressBookMain {
     public static void AddressBook(AddressBookOperation addressBookOperation) {
         do {
             System.out.println("Enter your choice \n1.Add New Address Book \n2.Display Address Books Names\n3.Search based on city or state" +
-                    "\n4.Count Persons belonging from Same City or State\n5.Sort Contact using Name");
+                    "\n4.Count Persons belonging from Same City or State \n5.Sort Address Book Data using Person Name");
+
             int ch = scanner.nextInt();
             switch (ch) {
                 case 1:
@@ -42,7 +43,7 @@ public class AddressBookOperation extends AddressBookMain {
                     System.out.println("Enter city name or state name to search records");
                     String name = scanner.next();
                     searchInMultipleAddressBook(name);
-                    break;
+             break;
                 case 4:
                     System.out.println("Enter city name or state name to Count Persons belonging from same city or state");
                     String countname = scanner.next();
@@ -50,6 +51,7 @@ public class AddressBookOperation extends AddressBookMain {
                     break;
                 case 5:
                     sortByName();
+                    break;
                 default:
                     System.out.println("Invalid Option Entered!!!!! Please Enter Valid Option to Add New Address Book");
 
@@ -227,6 +229,7 @@ public class AddressBookOperation extends AddressBookMain {
                 System.out.println ("FirstName \t LastName \t Email \t Contact Number \t Address \t City \t State \t Zip Code ");
                 System.out.println (v.getFirstName()+"\t"+v.getLastName()+"\t"+ v.getEmail()+"\t"+v.getContactNo()+"\t"+v.getAddress()+
                         "\t"+v.getCity()+"\t"+v.getState()+"\t"+v.getZipCode());
+
             }
     }
 
@@ -246,7 +249,7 @@ public class AddressBookOperation extends AddressBookMain {
 
 
     // serching a record in a through the City name or state name in single Address Book
-    public static void searchInSingleAddressBook(ArrayList<Contacts> contactDetails) {
+    public static void searchInSingleAddressBook(ArrayList<Contacts> contactDetails) {master
         int flag = 0;
         ArrayList<Contacts> match = new ArrayList<>();
         System.out.println("Enter City Name or State Name to search a particular person");
@@ -291,6 +294,9 @@ public class AddressBookOperation extends AddressBookMain {
             }
         }
     }
+
+    
+
     //Function for operations which you want to perform on Address Book
     public static ArrayList<Contacts> displayActionMenu(ArrayList<Contacts> details) {
         do {
