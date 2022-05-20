@@ -43,6 +43,7 @@ public class AddressBookOperation extends AddressBookMain {
                     String name = scanner.next();
                     searchInMultipleAddressBook(name);
                     break;
+
                 case 4:
                     System.out.println("Enter city name or state name to Count Persons belonging from same city or state");
                     String countname = scanner.next();
@@ -50,14 +51,16 @@ public class AddressBookOperation extends AddressBookMain {
                     break;
                 case 5:
                     sortByName();
+                    break;
                 case 6:
                     sortByCityStateOrZipCode();
+                    break;
                 default:
                     System.out.println("Invalid Option Entered!!!!! Please Enter Valid Option to Add New Address Book");
 
 
             }
-            System.out.println("Perform More operations on Multiple Books press Y otherwise press N");
+            System.out.println("\nPerform More operations on Multiple Books press Y otherwise press N");
             choice = scanner.next().charAt(0);
         } while (choice != 'n' && choice != 'N');
 
@@ -305,6 +308,7 @@ public class AddressBookOperation extends AddressBookMain {
             }
         }
     }
+    
 
     //Function for operations which you want to perform on Address Book
     public static ArrayList<Contacts> displayActionMenu(ArrayList<Contacts> details) {
