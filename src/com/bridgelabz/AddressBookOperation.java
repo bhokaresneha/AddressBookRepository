@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 import java.util.*;
 
+
 public class AddressBookOperation extends AddressBookMain {
 
     static Scanner scanner = new Scanner(System.in);
@@ -14,7 +15,8 @@ public class AddressBookOperation extends AddressBookMain {
     public static void AddressBook(AddressBookOperation addressBookOperation) {
         do {
             System.out.println("Enter your choice \n1.Add New Address Book \n2.Display Address Books Names\n3.Search based on city or state" +
-                    "\n4.Count Persons belonging from Same City or State");
+                    "\n4.Count Persons belonging from Same City or State \n5.Sort Address Book Data using Person Name");
+
             int ch = scanner.nextInt();
             switch (ch) {
                 case 1:
@@ -40,14 +42,16 @@ public class AddressBookOperation extends AddressBookMain {
                 case 3:
                     System.out.println("Enter city name or state name to search records");
                     String name = scanner.next();
-                    searchinMultipleAddressBook(name);
-                    break;
+                    searchInMultipleAddressBook(name);
+             break;
                 case 4:
                     System.out.println("Enter city name or state name to Count Persons belonging from same city or state");
                     String countname = scanner.next();
-                    countPersonFromSamecityorState(countname);
+                    countPersonFromSameCityOrState(countname);
                     break;
-
+                case 5:
+                    sortByName();
+                    break;
                 default:
                     System.out.println("Invalid Option Entered!!!!! Please Enter Valid Option to Add New Address Book");
 
@@ -230,23 +234,22 @@ public class AddressBookOperation extends AddressBookMain {
     }
 
 
-    public static List<Contacts> searchinMultipleAddressBook(String name){
+    public static void searchInMultipleAddressBook(String name){
         for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()){
             for (Contacts v:entry.getValue()){
                 if (v.getCity().equals(name)|| v.getState().equals(name)){
                     System.out.println("\n Record Found in=>");
-                    System.out.println("\n Address Book=>"+entry.getKey()+"\t Person Details=>"+v.getLastName()+"\t"+v.getLastName());
+                    System.out.println("\n Address Book=>"+entry.getKey()+"\t Person Details=>"+v.getFirstName()+"\t"+v.getLastName());
                 }
             }}
         System.out.printf("No record found:");
-        return null;
     }
 
 
 
 
     // serching a record in a through the City name or state name in single Address Book
-    public static void searchinSingleAddressBook(ArrayList<Contacts> contactDetails) {
+    public static void searchInSingleAddressBook(ArrayList<Contacts> contactDetails) {master
         int flag = 0;
         ArrayList<Contacts> match = new ArrayList<>();
         System.out.println("Enter City Name or State Name to search a particular person");
@@ -268,11 +271,8 @@ public class AddressBookOperation extends AddressBookMain {
         }
     }
 
-  //Counting how many persons belonging from same city or state
-  
-    public static List<Contacts> countPersonFromSamecityorState(String name){
+    public static void countPersonFromSameCityOrState(String name){
         int count=0;
-
         for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()){
             for (Contacts v:entry.getValue()){
                 if (v.getCity().equals(name)|| v.getState().equals(name)){
@@ -281,8 +281,21 @@ public class AddressBookOperation extends AddressBookMain {
             }
         }
         System.out.printf(count+"\tPersons belonging From =>"+name);
-        return null;
     }
+
+    public static void sortByName(){
+        for (Map.Entry<String, ArrayList<Contacts>> entry : hashmap.entrySet()){
+                List<Contacts> sort =entry.getValue()
+                        .stream()
+                        .sorted(Comparator.comparing(contactInfo -> contactInfo.getFirstName()))
+                        .toList();
+            for (Contacts item : sort) {
+                System.out.println(item.toString() + " ");
+            }
+        }
+    }
+
+    
 
     //Function for operations which you want to perform on Address Book
     public static ArrayList<Contacts> displayActionMenu(ArrayList<Contacts> details) {
@@ -305,7 +318,7 @@ public class AddressBookOperation extends AddressBookMain {
                     displayDetails(details);
                     break;
                 case 5:
-                    searchinSingleAddressBook(details);
+                    searchInSingleAddressBook(details);
                     break;
                 case 6:
                     System.out.println("EXIT");
