@@ -268,6 +268,8 @@ public class AddressBookOperation extends AddressBookMain {
         }
     }
 
+  //Counting how many persons belonging from same city or state
+  
     public static List<Contacts> countPersonFromSamecityorState(String name){
         int count=0;
 
