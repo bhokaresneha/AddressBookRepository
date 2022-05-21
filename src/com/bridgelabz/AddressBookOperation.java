@@ -12,7 +12,7 @@ public class AddressBookOperation implements AddressBookInterface {
     // static AddressBookOperation contacts =new AddressBookOperation();
     static HashMap<String, ArrayList<Contacts>> hashmap = new HashMap<>();
     static String AddressBookName;
-
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
              //*-*-*-*-*-*-*-*-*-*-*-Multiple Address Books Menu -*-*-*-*-*-*-*-*-*-*-*
 
@@ -358,7 +358,7 @@ public class AddressBookOperation implements AddressBookInterface {
             }
         }
     }
-
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //*-*-*-*-*-*-*-*-*-*-*-Sorting details by State City Or Zip-Code in Multiple Address Book -*-*-*-*-*-*-*-*-*-*-*
     public void sortByCityStateOrZipCode(){
